@@ -1,6 +1,9 @@
+<div *ngIf="loaderService.isLoading | async" class="loader-container">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
 <div class="calender">
 <div class="main">
-  <img src="assets/1293946.svg" alt="" class="first-monk" width="120px" height="155px">
+  <img src="assets/1293946.svg" alt="" class="first-monk">
   <div class="text-logo"><img src="assets/comp-calender-main.png" alt=""></div>
   <div class="content">
     <h1 class="content-primary"><span>Incorporated a company?</span> <br> </h1>
@@ -17,8 +20,34 @@
       </form>
   </div>
   <div class="second-monk">
-    <img src="assets/calender.svg" alt="" width="371px" height="478px">
+    <img src="assets/calender.svg" alt="">
   </div>
 </div>
-<app-data></app-data>
+<div class="data-box" *ngIf="this.dataSet">
+  <div class="box">
+      <h3>STAT <br> Meeting</h3>
+      <h4>{{ calcDate(this.dataSet.statutory_meeting) }} Days <br> remaining</h4>
+      <p>{{this.dataSet.statutory_meeting | date:'mediumDate'}}</p>
+  </div>
+  <div class="box">
+      <h3>AGM <br> Meeting</h3>
+      <h4>{{ calcDate(this.dataSet.annual_general_meeting) }} Days <br> remaining</h4>
+      <p>{{this.dataSet.annual_general_meeting | date:'mediumDate'}}</p>
+  </div>
+  <div class="box">
+      <h3>BOD <br> Meeting</h3>
+      <h4>{{ calcDate(this.dataSet.board_of_directors) }} Days <br> remaining</h4>
+      <p>{{this.dataSet.board_of_directors | date:'mediumDate'}}</p>
+  </div>
+  <div class="box">
+      <h3>Annual <br> Returns</h3>
+      <h4>{{ calcDate(this.dataSet.annual_returns) }} Days <br> remaining</h4>
+      <p>{{this.dataSet.annual_returns | date:'mediumDate'}}</p>
+  </div>
+</div>
+<div class="no-data" *ngIf="!this.dataSet">
+  <h2>🚫 No company data available, Please use the input boxes to fetch data 🚫</h2>
+  <img src="assets/405.svg" alt="">
+</div>
+<!-- <app-data [data]="dataSet"></app-data> -->
 </div>
