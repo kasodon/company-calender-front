@@ -14,8 +14,8 @@ export interface set {
 })
 
 export class ApiService {
-  // private SERVER_URL = "https://ancient-refuge-40596.herokuapp.com";
-  private SERVER_URL = "https://comp-calender.herokuapp.com";
+  // private SERVER_URL = "https://company-calender-server.onrender.com";
+  private SERVER_URL = "https://company-calender-server.onrender.com";
 
   constructor(private httpClient: HttpClient) { }
 
